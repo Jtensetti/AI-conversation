@@ -1,57 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Chatbot</title>
-    <style>
-      #messages {
-        height: 300px;
-        overflow-y: scroll;
-        padding: 10px;
-        border: 1px solid gray;
-        margin-bottom: 10px;
-      }
-      .user-message {
-        background-color: lightblue;
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 10px;
-        text-align: right;
-      }
-      .chatbot-message {
-        background-color: lightgray;
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 10px;
-      }
-      form {
-        display: flex;
-        justify-content: center;
-      }
-      input[type="text"] {
-        padding: 10px;
-        font-size: 20px;
-        border-radius: 10px;
-        border: 1px solid gray;
-        margin-right: 10px;
-      }
-      input[type="submit"] {
-        padding: 10px 20px;
-        background-color: lightblue;
-        border: none;
-        border-radius: 10px;
-        font-size: 20px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Chatbot</h1>
-    <div id="messages"></div>
-    <form>
-      <input type="text" id="message">
-      <input type="submit" value="Send">
-    </form>
-    <script src="https://jtensetti.github.io/AI-conversation/index.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="AlterVista - Editor HTML"/>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+ <title>Talk with a GPT3 bot</title>
+</head>
+<body>
+<b>Your API key (remains hidden to me): </b><input id="userapikey" value=""/> <!-- type="hidden"/-->
+
+<div id="divchatbot" style='border-style: solid; position: fixed; bottom: 10px; left:2%; width:96%; text-align: center; z-index: 1000; background-color: rgba(200, 200, 200, 1); visibility: visible; height: 200px; overflow-y : scroll; '>
+  <p align=left>
+  <button type="button" onclick="chatbotprocessinput()" title="" id="chatbotbutton"><font size=4>Send</font></button>
+  <button type="button" onclick="document.getElementById('divchatbot').style.visibility = 'hidden' ; document.getElementById('divchatbotoff').style.visibility = 'visible'" title="" id="chatbotbutton"><font size=4>Close</font></button>
+  <input id="chatuserinput" value="Say something like 'Hello, are you a chatbot?' or 'What is Green Day?'" style="font-size:20px;" placeholder="Type here to chat with bot" size=100 onkeydown="if (event.keyCode == 13) { chatbotprocessinput() }  ;  if (event.keyCode == 38) { repeatuser() }"></input>
+  </p>
+  <p id="vmdcode" align=left style="width:95%; word-wrap:break-word;"><br>Say something like "Hello, are you a chatbot?"</p>
+</div>
+
+<script>
+var _0x3107b7=_0x2a61;(function(_0x549ca6,_0x4a25bd){var _0x24f157=_0x2a61,_0x417dfc=_0x549ca6();while(!![]){try{var _0x164f9e=-parseInt(_0x24f157(0x127))/0x1*(parseInt(_0x24f157(0x143))/0x2)+parseInt(_0x24f157(0x144))/0x3+parseInt(_0x24f157(0x126))/0x4+parseInt(_0x24f157(0x12d))/0x5+parseInt(_0x24f157(0x12c))/0x6+parseInt(_0x24f157(0x134))/0x7*(parseInt(_0x24f157(0x137))/0x8)+-parseInt(_0x24f157(0x139))/0x9*(parseInt(_0x24f157(0x133))/0xa);if(_0x164f9e===_0x4a25bd)break;else _0x417dfc['push'](_0x417dfc['shift']());}catch(_0x2ee5cf){_0x417dfc['push'](_0x417dfc['shift']());}}}(_0x1fa4,0x20e2f));function _0x1fa4(){var _0x27af0e=['TDSgpt3withyourapikey.php?prompt=','8wfqKsm','<p>','403092XseZqE','userapikey','speechSynthesis','done','addCallback','result','start','&apikey=','User\x20probably\x20said:\x20','lang','2266rYAXRR','337137KSRbwg','Q:\x20','chatuserinput','Thinking...','553488JwqmMl','1aRhIyQ','replace','addEventListener','getElementById','trim','674850Gmcvgv','445150lGnHay','value','substring','abort','en-US','log','120yVvYfu','1547252CFdlDv','Bearer\x20'];_0x1fa4=function(){return _0x27af0e;};return _0x1fa4();}function _0x2a61(_0x2f92e,_0x33a831){var _0x1fa4ed=_0x1fa4();return _0x2a61=function(_0x2a6134,_0x366191){_0x2a6134=_0x2a6134-0x124;var _0x1b95b6=_0x1fa4ed[_0x2a6134];return _0x1b95b6;},_0x2a61(_0x2f92e,_0x33a831);}var prompt='I\x20am\x20a\x20highly\x20intelligent\x20bot\x20with\x20whom\x20you\x20can\x20talk.\x20I\x20try\x20to\x20reply\x20saying\x20the\x20truth,\x20but\x20sometimes\x20I\x20might\x20make\x20up\x20some\x20stuff.\x20I\x20work\x20by\x20integrating\x20GPT-3\x20as\x20a\x20brain\x20with\x20web\x20APIs\x20for\x20speech\x20recognition\x20and\x20speech\x20synthesis.;Q:\x20What\x20is\x20human\x20life\x20expectancy\x20in\x20the\x20United\x20States?;A:\x20Human\x20life\x20expectancy\x20in\x20the\x20United\x20States\x20is\x2078\x20years.;Q:\x20Who\x20was\x20president\x20of\x20the\x20United\x20States\x20in\x201955?;A:\x20Dwight\x20D.\x20Eisenhower\x20was\x20president\x20of\x20the\x20United\x20States\x20in\x201955.;Q:\x20Which\x20party\x20did\x20he\x20belong\x20to?;A:\x20He\x20belonged\x20to\x20the\x20Republican\x20Party.;Q:\x20How\x20does\x20a\x20telescope\x20work?;A:\x20Telescopes\x20use\x20lenses\x20or\x20mirrors\x20to\x20focus\x20light\x20and\x20make\x20objects\x20appear\x20closer.;Q:\x20Where\x20were\x20the\x201992\x20Olympics\x20held?;A:\x20The\x201992\x20Olympics\x20were\x20held\x20in\x20Barcelona,\x20Spain.;Q:\x20Who\x20developed\x20you?;A:\x20I\x20was\x20developed\x20by\x20Luciano\x20Abriata.',chatbotprocessinput=function(){var _0x6eb989=_0x2a61,_0x4134b4=_0x6eb989(0x135)+document[_0x6eb989(0x12a)](_0x6eb989(0x13a))['value'];theprompt=prompt+_0x6eb989(0x145)+document[_0x6eb989(0x12a)](_0x6eb989(0x124))[_0x6eb989(0x12e)]+'?',document[_0x6eb989(0x12a)]('vmdcode')['innerHTML']=_0x6eb989(0x125),$['ajax']({'url':_0x6eb989(0x136)+theprompt+_0x6eb989(0x140)+_0x4134b4})[_0x6eb989(0x13c)](function(_0x220f3d){var _0x228661=_0x6eb989,_0x13ad0c=_0x220f3d[_0x228661(0x128)](theprompt,'')['replace']('https://api.openai.com/v1/engines/text-davinci-002/completions','')['trim']();_0x13ad0c[_0x228661(0x12f)](0x0,0x1)=='?'&&(_0x13ad0c=_0x13ad0c['substring'](0x1));_0x13ad0c=_0x13ad0c[_0x228661(0x128)](/;Q:/g,'')[_0x228661(0x128)](/;A:/g,'')[_0x228661(0x128)](/Q:/g,'')[_0x228661(0x128)](/A:/g,''),_0x13ad0c=_0x13ad0c[_0x228661(0x12b)](),console['log'](_0x13ad0c),document[_0x228661(0x12a)]('vmdcode')['innerHTML']=_0x13ad0c;var _0x34f5a3=new SpeechSynthesisUtterance(_0x13ad0c[_0x228661(0x128)](_0x228661(0x138),''));_0x34f5a3[_0x228661(0x129)]('end',_0x2e3e1b=>{setTimeout(annyang['start'](),0xbb8),console['log']('End\x20event\x20done');}),_0x34f5a3[_0x228661(0x142)]=_0x228661(0x131),window[_0x228661(0x13b)]['speak'](_0x34f5a3),prompt=_0x220f3d['replace']('https://api.openai.com/v1/engines/text-davinci-002/completions','');});};annyang&&(annyang[_0x3107b7(0x13d)](_0x3107b7(0x13e),function(_0x225b7b){var _0x5e499d=_0x3107b7;console['log'](_0x5e499d(0x141),_0x225b7b[0x0]),console['log']('Possible\x20alternatives:\x20',_0x225b7b),document[_0x5e499d(0x12a)]('chatuserinput')['value']=_0x225b7b[0x0],annyang[_0x5e499d(0x130)](),chatbotprocessinput();}),annyang[_0x3107b7(0x13f)](),console[_0x3107b7(0x132)]('Anyang\x20running'));
+</script>
+
+</body>
 </html>
